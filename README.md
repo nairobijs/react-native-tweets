@@ -31,4 +31,4 @@ Feel free to contribute some code that can improve the looks or functionality of
 
 ## Credits
 
-Credits go to Chris McDonald for developing and sharing the [original web version](https://github.com/chrismcband/tweet-search) and his video demo about [Async in Redux](https://www.youtube.com/watch?v=9UZla3uIo3A)
+Credits go to Chris McDonald for the [original web version](https://github.com/chrismcband/tweet-search) and his video demo on [Async in Redux](https://www.youtube.com/watch?v=9UZla3uIo3A)
