@@ -1,4 +1,5 @@
-import { call, put, fork, takeEvery, takeLatest } from 'redux-saga/effects'
+import { takeEvery } from 'redux-saga';
+import { call, put, fork, select } from 'redux-saga/effects'
 import api from './api'
 import { log } from './utilities'
 
@@ -6,6 +7,7 @@ import {
   SEARCH_FOR_TWEETS_REQUESTED, 
   searchForTweetsSuccess,
   searchForTweetsError, 
+  setActiveSearch
 } from './actions';
 
 // Workers sagas
