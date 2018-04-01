@@ -1,72 +1,87 @@
 import {
-	SEARCH_FOR_TWEETS_REQUESTED,
-	SEARCH_FOR_TWEETS_SUCCESS,
-	SEARCH_FOR_TWEETS_ERROR,
-	SET_ACTIVE_SEARCH
-} from '../actions';
+  SEARCH_FOR_TWEETS_REQUESTED,
+  SEARCH_FOR_TWEETS_SUCCESS,
+  SEARCH_FOR_TWEETS_ERROR,
+  SET_ACTIVE_SEARCH
+} from '../actions'
 
 import { log } from '../utilities.js'
 
-export function tweets(state={}, action) {
-  switch (action.type) {
-    case SEARCH_FOR_TWEETS_SUCCESS:
-      const newState = { ...state };
-      action.tweets.forEach(tweet => {
-        newState[tweet.id] = tweet;
-      });
-
-      return newState;
-    default:
-      return state;
-  }
-}
-
-function search(state={searchText: '', isSearching: false}, action) {
+export function activeSearch (state = '', action) {
   switch (action.type) {
     case SEARCH_FOR_TWEETS_REQUESTED:
-      log('searching tweets 1 - ' + action.searchText)
-      return { ...state, searchText: action.searchText, isSearching: true };
-    case SEARCH_FOR_TWEETS_SUCCESS:
-    case SEARCH_FOR_TWEETS_ERROR:
-      return { ...state, isSearching: false };
+      return action.searchText
+    case SET_ACTIVE_SEARCH:
+      return action.searchText
     default:
-      return state;
+      return state
   }
 }
 
-export function searches(state={ activeSearch: '', searches: {} }, action) {
+let initialTweets = {
+  first: [
+    {
+      id: '001',
+      text: 'first 001'
+    },
+    {
+      id: '002',
+      text: 'first 002'
+    },
+    {
+      id: '003',
+      text: 'first 003'
+    }
+  ]
+}
+
+export function tweets (state = initialTweets, action) {
+  switch (action.type) {
+    case SEARCH_FOR_TWEETS_SUCCESS:
+      return {
+        ...state,
+        [action.searchText]: action.tweets
+      }
+    default:
+      return state
+  }
+}
+
+let initialSearches = {
+  first: {
+    isSearching: false,
+    error: null
+  }
+}
+
+export function searches (state = initialSearches, action) {
   switch (action.type) {
     case SEARCH_FOR_TWEETS_REQUESTED:
       log('searching tweets 2 - ' + action.searchText)
       return {
         ...state,
-        activeSearch: action.searchText,
-        searches: {
-          ...state.searches,
-          [action.searchText]:
-            search(state.searches[action.searchText], action)
+        [action.searchText]: {
+          isSearching: true,
+          error: ''
         }
-      };
+      }
     case SEARCH_FOR_TWEETS_SUCCESS:
       return {
         ...state,
-        error: null,
-        searches: {
-          ...state.searches,
-          [action.searchText]: search(state.searches[action.searchText], action)
+        [action.searchText]: {
+          isSearching: false,
+          error: null
         }
-      };
+      }
     case SEARCH_FOR_TWEETS_ERROR:
       return {
         ...state,
-        error: action.error
-      };
-    case SET_ACTIVE_SEARCH:
-      return {
-        ...state,
-        activeSearch: action.searchText
-      };
+        [action.searchText]: {
+          isSearching: false,
+          error: action.error
+        }
+      }
     default:
-      return state;
+      return state
   }
 }

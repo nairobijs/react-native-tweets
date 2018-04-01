@@ -1,38 +1,36 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { log } from '../utilities';
-import Search from './Search';
-import SearchTabs from './SearchTabs';
-import TweetList from './TweetList';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { searchForTweetsRequested, setActiveSearch } from '../actions';
-import { searchedTweets, searchesAsArray } from '../selectors';
+import React, { Component } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import { log } from '../utilities'
+import Search from './Search'
+import SearchTabs from './SearchTabs'
+import TweetList from './TweetList'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { searchForTweetsRequested, setActiveSearch } from '../actions'
 
 class App extends Component {
-
-  renderError() {
+  renderError () {
     return (
-      <Text className="error">{this.props.error}</Text>
-    );
+      <Text className='error'>{this.props.error}</Text>
+    )
   }
 
-  renderSearchResults() {
-    if (this.props.activeSearch) {
+  renderSearchResults () {
+    if (this.props.lastSearch) {
       return (
         <TweetList
           tweets={this.props.tweets}
           isSearching={this.props.isSearching}
         />
-      );
+      )
     } else {
       return (
         <Text >Nothing to show yet, try a search</Text>
-      );
+      )
     }
   }
 
-  render() {
+  render () {
     return (
       <View style={s.content}>
 
@@ -43,7 +41,7 @@ class App extends Component {
 
         <SearchTabs
           searches={this.props.searches}
-          activeSearch={this.props.activeSearch}
+          lastSearch={this.props.lastSearch}
           onClickTab={this.props.setActiveSearch}
         />
 
@@ -52,7 +50,7 @@ class App extends Component {
         </View>
 
       </View>
-    );
+    )
   }
 }
 
@@ -60,38 +58,36 @@ const s = StyleSheet.create({
   content: {
     backgroundColor: 'rgba(255, 255, 255, 0.7)',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 5
   },
   validation: {
-    // height: 0,
     color: 'red',
-    fontSize: 10,
-    // textAlign: 'right',
-  },
-});
+    fontSize: 10
+  }
+})
 
 const mapStateToProps = (state, ownProps) => {
-  const search = state.searches.searches[state.searches.activeSearch];
+  const searches = Object.keys(state.searches)
+  const lastSearch = searches[searches.length - 1]
+  const search = state.searches[lastSearch]
 
   return {
-    // tweets: searchedTweets(state),
-    tweets: state.tweets[state.activeSearch],
+    tweets: state.tweets[lastSearch],
     activeSearch: state.activeSearch,
-    // error: state.searches.error,
+    lastSearch: lastSearch,
     isSearching: search && search.isSearching,
     error: search && search.error,
-    searches: searchesAsArray(state),
-  };
-};
+    searches: searches
+  }
+}
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return bindActionCreators(
     { searchForTweetsRequested, setActiveSearch },
     dispatch
-  );
+  )
 }
 
-const AppConnected = connect(mapStateToProps, mapDispatchToProps)(App);
+const AppConnected = connect(mapStateToProps, mapDispatchToProps)(App)
 
-
-export default AppConnected;
+export default AppConnected
