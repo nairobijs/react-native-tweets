@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { log } from '../utilities'
 import Search from './Search'
 import SearchTabs from './SearchTabs'
 import TweetList from './TweetList'
@@ -16,7 +15,7 @@ class App extends Component {
   }
 
   renderSearchResults () {
-    if (this.props.lastSearch) {
+    if (this.props.activeSearch) {
       return (
         <TweetList
           tweets={this.props.tweets}
@@ -36,11 +35,10 @@ class App extends Component {
 
         <Search
           onSearch={this.props.searchForTweetsRequested}
-          searchText={this.props.activeSearch}
         />
         <SearchTabs
           searches={this.props.searches}
-          lastSearch={this.props.lastSearch}
+          activeSearch={this.props.activeSearch}
           onClickTab={this.props.setActiveSearch}
         />
 
@@ -72,13 +70,11 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state, ownProps) => {
   const searches = Object.keys(state.searches)
-  const lastSearch = searches[searches.length - 1]
-  const search = state.searches[lastSearch]
+  const search = state.searches[state.activeSearch]
 
   return {
-    tweets: state.tweets[lastSearch],
+    tweets: state.tweets[state.activeSearch],
     activeSearch: state.activeSearch,
-    lastSearch: lastSearch,
     isSearching: search && search.isSearching,
     error: search && search.error,
     searches: searches

@@ -22,10 +22,6 @@ class Search extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
 
-  componentWillReceiveProps (nextProps) {
-    this.setState({ searchText: nextProps.searchText })
-  }
-
   onChange (value) {
     this.setState({searchText: value})
   }
@@ -35,6 +31,10 @@ class Search extends Component {
     if (this.state.searchText) {
       this.props.onSearch(this.state.searchText)
     }
+    // clear search input
+    this.setState({
+      searchText: ''
+    })
   }
 
   render () {
@@ -74,7 +74,7 @@ const s = StyleSheet.create({
   button: {
     width: '100%',
     height: 50,
-    marginTop: 5,
+    marginBottom: 5,
     alignItems: 'center',
     backgroundColor: '#33acc1',
     padding: 11,

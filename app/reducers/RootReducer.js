@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { activeSearch, tweets, searches } from './tweets'
+import { activeSearch, tweets, searches } from './TweetsReducer'
 
 const RootReducer = combineReducers({
   activeSearch,

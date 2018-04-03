@@ -1,55 +1,54 @@
-import MessageQueue from 'react-native/Libraries/BatchedBridge/MessageQueue.js';
+import MessageQueue from 'react-native/Libraries/BatchedBridge/MessageQueue.js'
 
 export const log = string => {
-  console.log('──────────*******************───────────');
-  console.log(' ');
-  console.log(`          ${JSON.stringify(string)}`);
-  console.log(' ');
-  console.log('──────────*******************───────────');
+  console.log('──────────*******************───────────')
+  console.log(' ')
+  console.log(`          ${JSON.stringify(string)}`)
+  console.log(' ')
+  console.log('──────────*******************───────────')
 }
 
 export const spyMessageQueue = object => {
   MessageQueue.spy(msg => {
-    switch(msg.module) {
+    switch (msg.module) {
       case 'RCTDeviceEventEmitter':
-        break;
+        break
       case 'Timing':
-        break;
+        break
       case 'JSTimers':
-        break;
+        break
       case 'WebSocketModule':
-        break;
+        break
       case 'UIManager':
-        switch(msg.method) {
+        switch (msg.method) {
           case 'createView':
-            break;
+            break
           case 'setChildren':
-            break;
+            break
           case 'measureInWindow':
-            break;
+            break
           case '<callback for UIManager.measureInWindow>':
-            break;
+            break
           default:
             log(msg)
         }
-        break;
+        break
       case 'NativeAnimatedModule':
-        // switch(msg.method) {
+        // switch (msg.method) {
         //   case 'createAnimatedNode':
-        //     break;
+        //     break
         //   case 'connectAnimatedNodes':
-        //     break;
+        //     break
         //   case 'disconnectAnimatedNodes':
-        //     break;
+        //     break
         //   case 'dropAnimatedNode':
-        //     break;
+        //     break
         //   default:
         //     log(msg)
         // }
-        break;
+        break
       default:
         log(msg)
     }
-  });
+  })
 }
-

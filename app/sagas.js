@@ -15,8 +15,8 @@ function * fetchTweets (action) {
   log('worker saga ' + action.type)
   try {
     const activeSearch = yield select(state => state.activeSearch)
-    log('emptying activeSearch: ' + activeSearch)
-    yield put(setActiveSearch(''))
+    log('setting activeSearch: ' + activeSearch)
+    yield put(setActiveSearch(activeSearch))
 
     log('api call: ' + action.searchText)
     const tweets = yield call(api.search, action.searchText)
