@@ -28,9 +28,9 @@ The initial project scaffold code was generated with create-react-app, the auto-
 
 
 Feel free to contribute some code that can improve the looks or functionality of this demo app.
+### Suggestions:
 
-Suggestions:
-
+```
 √ Loading state button
 √ Pull down to refresh active search
 √ Pull down to retry failed searches (network request)
@@ -39,7 +39,7 @@ Suggestions:
 √ Display tweet stats - retweets, favourites
 √ Favorite action
 √ Retweet action
-
+```
 
 ## Credits
 
