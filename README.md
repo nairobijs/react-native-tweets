@@ -32,12 +32,14 @@ Feel free to contribute some code that can improve the looks or functionality of
 Suggestions:
 
 √ Loading state button
-√ Retry button for failed searches (network request)
+√ Pull down to refresh active search
+√ Pull down to retry failed searches (network request)
 √ Display tweep - (tweet account holder) name and image
 √ Display tweet uploaded image
 √ Display tweet stats - retweets, favourites
 √ Favorite action
 √ Retweet action
+
 
 ## Credits
 
