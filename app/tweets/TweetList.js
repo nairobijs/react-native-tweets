@@ -1,15 +1,21 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { ScrollView, Text, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 
 const styles = StyleSheet.create({
-  tweets: {
-    height: '100%'
+  scrollview: {
+    paddingBottom: 100,
+    justifyContent: 'flex-start'
   },
   tweet: {
-    fontSize: 30,
-    paddingTop: 10,
-    paddingBottom: 10
+    fontSize: 25,
+    padding: 10,
+    borderBottomWidth: 2,
+    borderColor: '#fff'
+  },
+  message: {
+    fontSize: 20,
+    padding: 10
   }
 })
 
@@ -28,13 +34,13 @@ function renderTweets (tweets) {
 
 function TweetList (props) {
   return (
-    <View className='TweetList' style={styles.tweets}>
+    <ScrollView contentContainerStyle={styles.scrollview} className='TweetList'>
       {
         props.isSearching
-          ? <Text>Searching...</Text>
+          ? <Text style={styles.message}>Searching...</Text>
           : renderTweets(props.tweets)
       }
-    </View>
+    </ScrollView>
   )
 }
 

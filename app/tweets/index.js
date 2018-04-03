@@ -11,7 +11,7 @@ import { searchForTweetsRequested, setActiveSearch } from '../actions'
 class App extends Component {
   renderError () {
     return (
-      <Text className='error'>{this.props.error}</Text>
+      <Text className='error' style={styles.message}>{this.props.error}</Text>
     )
   }
 
@@ -25,27 +25,26 @@ class App extends Component {
       )
     } else {
       return (
-        <Text >Nothing to show yet, try a search</Text>
+        <Text style={styles.message}>Nothing to show yet, try a search</Text>
       )
     }
   }
 
   render () {
     return (
-      <View style={s.content}>
+      <View style={styles.container}>
 
         <Search
           onSearch={this.props.searchForTweetsRequested}
           searchText={this.props.activeSearch}
         />
-
         <SearchTabs
           searches={this.props.searches}
           lastSearch={this.props.lastSearch}
           onClickTab={this.props.setActiveSearch}
         />
 
-        <View>
+        <View style={styles.content}>
           {this.props.error ? this.renderError() : this.renderSearchResults()}
         </View>
 
@@ -54,15 +53,20 @@ class App extends Component {
   }
 }
 
-const s = StyleSheet.create({
-  content: {
+const styles = StyleSheet.create({
+  container: {
     backgroundColor: 'rgba(255, 255, 255, 0.7)',
     padding: 10,
-    borderRadius: 5
+    borderRadius: 5,
+    height: '100%'
   },
-  validation: {
-    color: 'red',
-    fontSize: 10
+  content: {
+    backgroundColor: 'aqua',
+    flex: 1
+  },
+  message: {
+    fontSize: 20,
+    padding: 10
   }
 })
 

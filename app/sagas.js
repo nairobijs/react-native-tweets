@@ -14,11 +14,11 @@ import {
 function * fetchTweets (action) {
   log('worker saga ' + action.type)
   try {
-    const activeSearch = yield select(state => state.searches.activeSearch)
+    const activeSearch = yield select(state => state.activeSearch)
     log('emptying activeSearch: ' + activeSearch)
     yield put(setActiveSearch(''))
 
-    log('api call... ' + action.searchText)
+    log('api call: ' + action.searchText)
     const tweets = yield call(api.search, action.searchText)
 
     yield put(searchForTweetsSuccess(action.searchText, tweets))
@@ -31,11 +31,11 @@ function * fetchTweets (action) {
   Watcher sagas
 */
 export function * watchSearchTweets () {
-  log('watchSearchTweets')
   yield * takeEvery(SEARCH_FOR_TWEETS_REQUESTED, fetchTweets) // Allow concurrent workers
 }
 
 // Root saga that will be run, we just fork the watcher sagas
 export default function * rootSaga () {
+  log('running sagas')
   yield fork(watchSearchTweets)
 }

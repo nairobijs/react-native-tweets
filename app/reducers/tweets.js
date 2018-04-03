@@ -18,22 +18,23 @@ export function activeSearch (state = '', action) {
   }
 }
 
-let initialTweets = {
-  first: [
-    {
-      id: '001',
-      text: 'first 001'
-    },
-    {
-      id: '002',
-      text: 'first 002'
-    },
-    {
-      id: '003',
-      text: 'first 003'
-    }
-  ]
-}
+let initialTweets = {}
+// let initialTweets = {
+//   first: [
+//     {
+//       id: '001',
+//       text: 'This is my first tweet!'
+//     },
+//     {
+//       id: '002',
+//       text: 'I got a new friend on my first day at work :)'
+//     },
+//     {
+//       id: '003',
+//       text: 'RT @techytimo: First things first, I hate twitter but I <3 React...'
+//     }
+//   ]
+// }
 
 export function tweets (state = initialTweets, action) {
   switch (action.type) {
@@ -47,12 +48,13 @@ export function tweets (state = initialTweets, action) {
   }
 }
 
-let initialSearches = {
-  first: {
-    isSearching: false,
-    error: null
-  }
-}
+let initialSearches = {}
+// let initialSearches = {
+//   first: {
+//     isSearching: false,
+//     error: null
+//   }
+// }
 
 export function searches (state = initialSearches, action) {
   switch (action.type) {
