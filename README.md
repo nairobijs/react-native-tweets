@@ -39,6 +39,7 @@ Feel free to contribute some code that can improve the looks or functionality of
 + Favorite action
 + Retweet action
 + Clear tags
++ Tests with Jest
 ```
 
 ## Credits
