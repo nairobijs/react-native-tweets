@@ -8,6 +8,12 @@ const propTypes = {
   onClickTab: PropTypes.func.isRequired
 }
 
+const setActiveSearch = (props, query) => {
+  if (props.activeSearch !== query) {
+    props.onClickTab(query)
+  }
+}
+
 function SearchTabs (props) {
   return (
     <View style={styles.tags}>
@@ -17,7 +23,7 @@ function SearchTabs (props) {
           tagStyle = Object.assign({...styles.tag}, styles.active)
         }
         return (
-          <TouchableOpacity key={query} onPress={() => props.onClickTab(query)}>
+          <TouchableOpacity key={query} onPress={() => setActiveSearch(props, query)}>
             <Text style={tagStyle}>{query}</Text>
           </TouchableOpacity>
         )
