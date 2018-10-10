@@ -25,25 +25,21 @@ yarn global add twitter-proxy
 twitter-proxy twitter-config.json
 ```
 
-2. Clone this project
+2. Clone this project and install dependencies with yarn or npm install
 ```
 git clone git@github.com:nairobijs/react-native-tweets.git
-```
-
-3. Install dependencies with yarn or npm install
-```
+cd react-native-tweets
 yarn
-```
 
-4. Connect your android device to your machine via USB
+3. Connect your android device to your machine via USB
 
-5. Open this link on Google Chrome and forward port 7890 traffic to localhost:7890 on your android device
+4. Open this link on Google Chrome and forward port 7890 traffic to localhost:7890 on your android device
 
 ```
 chrome://inspect/#devices
 ```
 
-6. Run the project
+5. Run the project
 ```
 react-native run-android
 ```
