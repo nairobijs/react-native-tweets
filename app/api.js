@@ -1,6 +1,5 @@
-// utilities
-/* global fetch */
-const twitterURL = 'http://localhost:7890/1.1' // PROXY
+// Get Local IP
+const twitterAPI = 'http://localhost:7890/1.1' // PROXY
 
 const api = {
   search: query => {
@@ -22,7 +21,7 @@ const api = {
     //   }
     // ]
 
-    return fetch(`${twitterURL}/search/tweets.json?q=${queryEncoded}`, {
+    return fetch(`${twitterAPI}/search/tweets.json?q=${queryEncoded}`, {
       // method: 'POST',
       headers: {
         Accept: 'application/json',
