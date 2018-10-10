@@ -7,7 +7,7 @@ Simple react native app that allows you to search for tweets.
 
 1. Create your local twitter server:
 
-Create a new app on https://dev.twitter.com/ and record the consumer key and secret in a `config.json` file somewhere.
+Create a new app on https://dev.twitter.com/ and record the consumer key and secret in a `twitter-config.json` file somewhere.
 This file should containing at least the following keys:
 
 ```
@@ -22,7 +22,7 @@ Start the twitter proxy referencing the `config.json` file you created earlier. 
 
 ```
 yarn global add twitter-proxy
-twitter-proxy ./config.json
+twitter-proxy twitter-config.json
 ```
 
 2. Clone this project
