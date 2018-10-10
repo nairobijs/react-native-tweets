@@ -30,6 +30,7 @@ twitter-proxy twitter-config.json
 git clone git@github.com:nairobijs/react-native-tweets.git
 cd react-native-tweets
 yarn
+```
 
 3. Connect your android device to your machine via USB
 
