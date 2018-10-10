@@ -32,7 +32,10 @@ cd react-native-tweets
 yarn
 ```
 
-3. Connect your android device to your machine via USB. Make sure you have [USB debugging enabled.](https://developers.google.com/web/tools/chrome-devtools/remote-debugging/)
+3. Connect your android device to your machine via USB. Make sure you have USB debugging enabled
+```
+https://developers.google.com/web/tools/chrome-devtools/remote-debugging/
+```
 
 4. Open this link on Google Chrome and forward port 7890 traffic to localhost:7890 on your android device
 
