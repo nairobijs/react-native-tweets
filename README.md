@@ -40,9 +40,9 @@ yarn
 react-native run-android
 ```
 
-5. Connect your android device
+5. Connect your android device to your machine via USB
 
-6. Open this link on Google Chrome and forward port 7890 traffic to localhost:7890 on your mobile device connected via USB
+6. Open this link on Google Chrome and forward port 7890 traffic to localhost:7890 on your android device
 
 ```
 chrome://inspect/#devices
