@@ -37,7 +37,7 @@ yarn
 https://developers.google.com/web/tools/chrome-devtools/remote-debugging/
 ```
 
-4. Open this link on Google Chrome and forward port 7890 traffic to localhost:7890 on your android device
+4. Open this link on Google Chrome and forward port 7890 traffic to localhost:7890 on your android device. The device should be detected on this page.
 
 ```
 chrome://inspect/#devices
