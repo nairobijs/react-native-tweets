@@ -35,18 +35,19 @@ git clone git@github.com:nairobijs/react-native-tweets.git
 yarn
 ```
 
-4. Run the project
-```
-react-native run-android
-```
+4. Connect your android device to your machine via USB
 
-5. Connect your android device to your machine via USB
-
-6. Open this link on Google Chrome and forward port 7890 traffic to localhost:7890 on your android device
+5. Open this link on Google Chrome and forward port 7890 traffic to localhost:7890 on your android device
 
 ```
 chrome://inspect/#devices
 ```
+
+6. Run the project
+```
+react-native run-android
+```
+
 
 
 ## Contribute
